@@ -37,7 +37,7 @@ interface BaseScreenProps {
    */
   backgroundColor?: string
   /**
-   * Status bar setting. Defaults to dark.
+   * Status bar setting. Defaults to light.
    */
   statusBarStyle?: "light" | "dark"
   /**
@@ -194,7 +194,7 @@ export function Screen(props: ScreenProps) {
     keyboardOffset = 0,
     safeAreaEdges,
     StatusBarProps,
-    statusBarStyle = "dark",
+    statusBarStyle = "light",
   } = props
 
   const $containerInsets = useSafeAreaInsetsStyle(safeAreaEdges)

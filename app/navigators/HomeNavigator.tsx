@@ -5,11 +5,13 @@ import { TextStyle, ViewStyle } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Icon } from "../components"
 import { translate } from "../i18n"
-import { SettingsScreen, WorkoutsScreen } from "../screens"
-import { colors, spacing, typography } from "../theme"
+import { SettingsScreen, CommunityScreen } from "../screens"
+import { colors, typography } from "../theme"
 import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
+import { WorkoutsScreen } from "app/screens/WorkoutsScreen"
 
 export type HomeTabParamList = {
+  Community: undefined
   Workouts: undefined
   Settings: undefined
 }
@@ -42,12 +44,33 @@ export function HomeNavigator() {
       }}
     >
       <Tab.Screen
+        name="Community"
+        component={CommunityScreen}
+        options={{
+          tabBarLabel: translate("navigator.communityTab"),
+          tabBarShowLabel: false,
+          tabBarIcon: ({ focused }) => (
+            <Icon
+              icon="community"
+              color={focused ? colors.tint : colors.palette.neutral100}
+              size={25}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
         name="Workouts"
         component={WorkoutsScreen}
         options={{
           tabBarLabel: translate("navigator.workoutsTab"),
+          tabBarShowLabel: false,
           tabBarIcon: ({ focused }) => (
-            <Icon icon="community" color={focused && colors.tint} size={30} />
+            <Icon
+              icon="dumbbell"
+              color={focused ? colors.tint : colors.palette.neutral100}
+              size={25}
+            />
           ),
         }}
       />
@@ -57,8 +80,13 @@ export function HomeNavigator() {
         component={SettingsScreen}
         options={{
           tabBarLabel: translate("navigator.settingsTab"),
+          tabBarShowLabel: false,
           tabBarIcon: ({ focused }) => (
-            <Icon icon="settings" color={focused && colors.tint} size={30} />
+            <Icon
+              icon="settings"
+              color={focused ? colors.tint : colors.palette.neutral100}
+              size={25}
+            />
           ),
         }}
       />
@@ -67,13 +95,12 @@ export function HomeNavigator() {
 }
 
 const $tabBar: ViewStyle = {
-  backgroundColor: colors.border, // TODO: change to colors.background
-  borderTopColor: colors.transparent,
+  backgroundColor: colors.background,
+  borderTopColor: colors.palette.stone800,
+  borderTopWidth: 1,
 }
 
-const $tabBarItem: ViewStyle = {
-  paddingTop: spacing.md,
-}
+const $tabBarItem: ViewStyle = {}
 
 const $tabBarLabel: TextStyle = {
   fontSize: 12,

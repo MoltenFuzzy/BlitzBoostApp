@@ -16,6 +16,14 @@ const plugins = [
       ],
     },
   ],
+  [
+    "@babel/plugin-proposal-decorators",
+    {
+      legacy: true,
+    },
+  ],
+  ["@babel/plugin-proposal-optional-catch-binding"],
+  "inline-dotenv",
   "nativewind/babel",
   /** react-native-reanimated web support @see https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/#web */
   "@babel/plugin-proposal-export-namespace-from",
