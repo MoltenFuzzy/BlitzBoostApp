@@ -51,6 +51,7 @@ const en = {
   },
   navigator: {
     workoutsTab: "Workouts",
+    workoutDetailsTab: "Workout Details",
     addWorkoutsTab: "Add Workouts",
     profileTab: "Profile",
     settingsTab: "Settings",

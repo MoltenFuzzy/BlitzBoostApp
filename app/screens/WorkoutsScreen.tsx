@@ -6,6 +6,7 @@ import { spacing, colors } from "../theme"
 import { useHeader } from "app/utils/useHeader"
 
 export const WorkoutsScreen: FC<TabScreenProps<"Workouts">> = function WorkoutsScreen(_props) {
+  const { navigation } = _props
   const [modalVisible, setModalVisible] = useState(false)
   useHeader({
     titleTx: "navigator.workoutsTab",
@@ -13,12 +14,13 @@ export const WorkoutsScreen: FC<TabScreenProps<"Workouts">> = function WorkoutsS
     rightIconColor: colors.palette.neutral100,
     onRightPress: () => setModalVisible(true),
     backgroundColor: colors.palette.stone900,
-    titleStyle: $heading,
-    containerStyle: $headerContainer,
+    titleStyle: $titleStyle,
+    containerStyle: { borderBottomColor: colors.palette.stone700, borderBottomWidth: 1 },
+    style: $viewContainer,
   })
 
   return (
-    <Screen preset="scroll" contentContainerStyle={$container} statusBarStyle="light">
+    <Screen preset="scroll" contentContainerStyle={$container}>
       {[...Array(10)].map((_, i) => (
         <ListItem
           key={i}
@@ -27,6 +29,11 @@ export const WorkoutsScreen: FC<TabScreenProps<"Workouts">> = function WorkoutsS
           bottomSeparator={true}
           style={{ padding: spacing.sm }}
           containerStyle={{ borderBottomColor: colors.palette.stone700 }}
+          rightIcon="caretRight"
+          rightIconColor={colors.palette.neutral100}
+          onPress={() => {
+            navigation.navigate("WorkoutDetails")
+          }}
         />
       ))}
 
@@ -54,17 +61,12 @@ export const WorkoutsScreen: FC<TabScreenProps<"Workouts">> = function WorkoutsS
   )
 }
 
-const $headerContainer: ViewStyle = {
-  borderBottomColor: colors.palette.stone700,
-  borderBottomWidth: 1,
-  flex: 0,
+const $titleStyle: TextStyle = {
+  fontSize: 36,
+  lineHeight: 44,
 }
 
-const $heading: TextStyle = {
-  fontSize: 35,
-  paddingVertical: spacing.lg,
-  textAlign: "left",
-}
+const $viewContainer: ViewStyle = {}
 
 const $container: ViewStyle = {}
 
@@ -73,11 +75,13 @@ const $centeredView: ViewStyle = {
   justifyContent: "center",
   alignItems: "center",
 }
+
 const $modalView: ViewStyle = {
   backgroundColor: colors.background,
   height: "100%",
   width: "100%",
 }
+
 const $button: ViewStyle = {
   borderRadius: 20,
   padding: 10,

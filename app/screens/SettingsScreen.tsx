@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { TextStyle, View, ViewStyle } from "react-native"
-import { Button, Text, Screen } from "../components"
+import { Button, Screen } from "../components"
 import { TabScreenProps } from "app/navigators/HomeNavigator"
 import { useStores } from "../models"
 import { spacing, colors } from "../theme"

@@ -38,6 +38,7 @@ export type AppStackParamList = {
   //! 🔥 SCREENS GO HERE
   Welcome: undefined
   Login: undefined
+  WorkoutDetails: undefined
   Home: NavigatorScreenParams<HomeTabParamList>
 
   // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
@@ -68,6 +69,9 @@ const AppStack = observer(function AppStack() {
       initialRouteName={isAuthenticated ? "Home" : "Login"} // @demo remove-current-line
     >
       {/** 🔥 Your screens go here */}
+      <Stack.Screen name="WorkoutDetails" component={Screens.WorkoutDetailsScreen} />
+      {/** 🔥 Your screens go here */}
+
       {isAuthenticated ? (
         <>
           {/* <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} /> */}

@@ -40,6 +40,14 @@ const config = {
       path: "",
     },
     Welcome: "welcome",
+    Home: {
+      screens: {
+        Community: "community",
+        Workouts: "workouts",
+        WorkoutDetails: "workout-details",
+        Settings: "settings",
+      },
+    },
     Demo: {
       screens: {
         DemoShowroom: {
